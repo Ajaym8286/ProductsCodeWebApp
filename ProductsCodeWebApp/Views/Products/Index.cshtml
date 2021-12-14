@@ -1,0 +1,93 @@
+﻿@model ProductsCodeWebApp.Models.ProductService
+
+@{
+    ViewData["Title"] = "Display Data";
+    string[] TableHeaders = new string[]
+    {"Product_ID "
+          ,"Name"
+          ,"Description"};
+}
+<style>
+    /* Style the body */
+    body {
+        font-family: Arial;
+        margin: 0;
+    }
+
+    /* Header/Logo Title */
+    .header {
+        padding: 60px;
+        text-align: center;
+        background: #1abc9c;
+        color: white;
+        font-size: 30px;
+    }
+
+    /* Page Content */
+    .content {
+        padding: 20px;
+    }
+</style>
+
+
+<div class="header">
+    <h1>Product</h1>
+    <p>DeltaWare Products</p>
+</div>
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 75%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+<body>
+    <Center>
+        <h1>
+            Product Details
+        </h1>
+        @if (Model != null)
+        {
+            <table class="table table table-bordered table-hover">
+                <tr>
+                    <th>Product ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+                @foreach (var item in Model.ProductsDetails)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(m => item.Product_ID)</td>
+                        <td>@Html.DisplayFor(m => item.Name)</td>
+                        <td>@Html.DisplayFor(m => item.Description)</td>
+                    </tr>
+                }
+            </table>
+        }
+    </Center>
+</body>
+</html>
